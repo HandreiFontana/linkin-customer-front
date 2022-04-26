@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         fontWeight: 'bold',
         paddingTop: '25px',
-        color: '#3F51B5',
+        color: theme.palette.primary.main,
     },
     paper: {
         marginTop: '0',

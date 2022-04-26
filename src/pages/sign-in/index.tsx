@@ -82,7 +82,7 @@ const SignIn: React.FC = () => {
                     spacing={0}
                     direction="column"
                     alignItems="center"
-                    justify="center"
+                    justifyContent="center"
                     style={{ minHeight: '100vh', width: '100%' }}
                 >
                     <Box className={classes.paper} boxShadow={4}>
