@@ -39,6 +39,8 @@ const SignIn: React.FC = () => {
     const handleSubmit = useCallback(async (data: SignInFormData) => {
         setIsAccessing(true);
 
+        console.log(data.email, data.password);
+
         try {
             await signIn({
                 email: data.email,
@@ -48,7 +50,7 @@ const SignIn: React.FC = () => {
             setCustomErrorMessage('');
             setIsAccessing(false);
 
-            history.push('/dashboard');
+            history.push('/');
         } catch (err) {
             setIsAccessing(false);
             setCustomErrorMessage('Ocorreu um erro ao fazer login. Cheque suas credenciais.');
@@ -121,10 +123,10 @@ const SignIn: React.FC = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                name="userPassword"
+                                name="password"
                                 label="Senha"
                                 type="password"
-                                id="userPassword"
+                                id="password"
                                 autoComplete="current-password"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
