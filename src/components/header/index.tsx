@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { GrLogin } from 'react-icons/gr';
 
 import { AppBar, Button, Toolbar } from '@material-ui/core';
@@ -10,8 +10,6 @@ import { useStyles } from './styles'
 
 const Header: React.FC = () => {
     const classes = useStyles();
-
-    const history = useHistory();
 
     return (
         <AppBar position="fixed" className={classes.appBar}>
