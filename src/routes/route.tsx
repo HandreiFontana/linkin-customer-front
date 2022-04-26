@@ -10,9 +10,10 @@ import DefaultLayout from '../pages/_layouts/default';
 interface RouteProps extends ReactDOMRouteProps {
     isPrivate?: boolean;
     component: React.ComponentType;
+    defaultLayout?: boolean;
 }
 
-const Route: React.FC<RouteProps> = ({ component: Component, isPrivate = false, ...rest }) => {
+const Route: React.FC<RouteProps> = ({ component: Component, isPrivate = false, defaultLayout = false, ...rest }) => {
     const { account } = useAuth();
 
     if (!account && isPrivate) {
@@ -23,7 +24,7 @@ const Route: React.FC<RouteProps> = ({ component: Component, isPrivate = false, 
     //     return <Redirect to="/dashboard" />;
     // }
 
-    const Layout = account ? DefaultLayout : AuthLayout;
+    const Layout = defaultLayout ? DefaultLayout : AuthLayout;
 
     return (
         <ReactDOMRoute
