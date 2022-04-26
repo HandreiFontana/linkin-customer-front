@@ -6,13 +6,17 @@ const useStyles = makeStyles((theme: Theme) =>
             zIndex: theme.zIndex.drawer + 1,
             height: '5rem',
         },
-        toolbar: {
+        container: {
             maxWidth: '1120px',
             height: '100%',
-
+        },
+        grids: {
+            height: '100%',
+        },
+        grid: {
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            flexDirection: 'column',
+            justifyContent: 'center',
         },
         logo: {
             width: '160px',

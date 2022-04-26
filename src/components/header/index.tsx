@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { GrLogin } from 'react-icons/gr';
 
-import { AppBar, Button, Toolbar } from '@material-ui/core';
+import { AppBar, Button, Container, Grid, Toolbar } from '@material-ui/core';
 
 import logo from '../../assets/logo.svg';
 
@@ -13,19 +13,24 @@ const Header: React.FC = () => {
 
     return (
         <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar className={classes.toolbar}>
-                <img src={logo} alt="Linkin" className={classes.logo} />
-
-                <Button
-                    variant="contained"
-                    component={Link}
-                    to="/signin"
-                    className={classes.button}
-                >
-                    <GrLogin className={classes.loginIcon} />
-                    Entrar
-                </Button>
-            </Toolbar>
+            <Container className={classes.container}>
+                <Grid container className={classes.grids}>
+                    <Grid item xs={10} className={classes.grid}>
+                        <img src={logo} alt="Linkin" className={classes.logo} />
+                    </Grid>
+                    <Grid item xs={2} className={classes.grid}>
+                        <Button
+                            variant="contained"
+                            component={Link}
+                            to="/signin"
+                            className={classes.button}
+                        >
+                            <GrLogin className={classes.loginIcon} />
+                            Entrar
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Container>
         </AppBar>
     )
 }
