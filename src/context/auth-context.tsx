@@ -12,10 +12,18 @@ interface SignInCredentials {
     password: string;
 }
 
+interface SignUpCredentials {
+    username: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
 interface AuthContextData {
     account: Account;
     signIn(credentials: SignInCredentials): Promise<void>;
     signOut(): void;
+    signUp(credentials: SignUpCredentials): void;
 }
 
 interface AuthState {
@@ -59,8 +67,25 @@ const AuthProvider: React.FC = ({ children }) => {
         setData({} as AuthState)
     }, [])
 
+    const signUp = useCallback(async ({
+        username,
+        email,
+        password
+    }: SignUpCredentials) => {
+        await api.post('accounts', {
+            username,
+            email,
+            password
+        });
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ account: data.account, signIn, signOut }}>
+        <AuthContext.Provider value={{
+            account: data.account,
+            signIn,
+            signOut,
+            signUp,
+        }}>
             {children}
         </AuthContext.Provider>
     );

@@ -8,8 +8,6 @@ import { useHistory } from 'react-router-dom';
 import { useStyles } from "./styles";
 
 import { useAuth } from '../../context/auth-context';
-import api from '../../services/api';
-
 
 interface SignUpFormData {
     username: string;
@@ -17,7 +15,6 @@ interface SignUpFormData {
     password: string;
     confirmPassword: string;
 }
-
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -41,19 +38,9 @@ const SignUp: React.FC = () => {
     const [customErrorMessage, setCustomErrorMessage] = useState('');
     const [isAccessing, setIsAccessing] = useState(false);
 
-    const signUp = useCallback(async ({
-        username,
-        email,
-        password
-    }: SignUpFormData) => {
-        await api.post('accounts', {
-            username,
-            email,
-            password
-        });
-    }, []);
 
-    const { signIn } = useAuth();
+
+    const { signIn, signUp } = useAuth();
     const classes = useStyles();
 
     const history = useHistory();
@@ -62,7 +49,7 @@ const SignUp: React.FC = () => {
         setIsAccessing(true);
 
         try {
-            await signUp({
+            signUp({
                 username: data.username,
                 email: data.email,
                 password: data.password,
