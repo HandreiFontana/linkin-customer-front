@@ -77,6 +77,7 @@ const AuthProvider: React.FC = ({ children }) => {
             email,
             password
         });
+
     }, []);
 
     return (

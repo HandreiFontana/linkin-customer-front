@@ -47,7 +47,7 @@ const SignUp: React.FC = () => {
         setIsAccessing(true);
 
         try {
-            signUp({
+            await signUp({
                 username: data.username,
                 email: data.email,
                 password: data.password,
@@ -56,7 +56,7 @@ const SignUp: React.FC = () => {
 
             await signIn({
                 email: data.email,
-                password: data.password
+                password: data.password,
             });
 
             setCustomErrorMessage('');
@@ -67,7 +67,7 @@ const SignUp: React.FC = () => {
             setIsAccessing(false);
             setCustomErrorMessage('Erro');
         }
-    }, [signUp, history]);
+    }, [signUp, signIn, history]);
 
     return (
         <Formik
