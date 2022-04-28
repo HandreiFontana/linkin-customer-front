@@ -38,8 +38,6 @@ const SignUp: React.FC = () => {
     const [customErrorMessage, setCustomErrorMessage] = useState('');
     const [isAccessing, setIsAccessing] = useState(false);
 
-
-
     const { signIn, signUp } = useAuth();
     const classes = useStyles();
 
@@ -100,7 +98,7 @@ const SignUp: React.FC = () => {
                     spacing={0}
                     direction="column"
                     alignItems="center"
-                    justify="center"
+                    justifyContent="center"
                     style={{ minHeight: '100vh', width: '100%' }}
                 >
                     <Box className={classes.paper} boxShadow={4}>
