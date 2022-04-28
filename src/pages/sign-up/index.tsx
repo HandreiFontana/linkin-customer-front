@@ -201,7 +201,7 @@ const SignUp: React.FC = () => {
                                     />
                                 </Grid>
 
-                                <Grid item xs={0}>
+                                <Grid item>
                                     <Button
                                         type="submit"
                                         fullWidth

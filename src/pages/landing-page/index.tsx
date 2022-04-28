@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button, Container, Grid, Typography } from '@material-ui/core';
 
@@ -19,7 +20,14 @@ const LandingPage: React.FC = () => {
                             variant="h2"
                             className={classes.title}
                         >Comece a salvar seus <strong className={classes.strong}>links</strong> agora mesmo!</Typography>
-                        <Button className={classes.button}>Registre-se</Button>
+                        <Button
+                            variant="contained"
+                            component={Link}
+                            to="/signup"
+                            className={classes.button}
+                        >
+                            Registre-se
+                        </Button>
                     </div>
                 </Grid>
                 <Grid item xs={4}>
