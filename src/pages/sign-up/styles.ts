@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import signInBackgroundImg from '../../assets/logon.png'
+import signUpBackgroundImg from '../../assets/signup.png'
 
 const useStyles = makeStyles((theme) => ({
     messages: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         fontWeight: 'bold',
         paddingTop: '25px',
-        color: '#3F51B5',
+        color: theme.palette.primary.main,
     },
     paper: {
         marginTop: '0',
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'left',
         justifyContent: 'center',
-        backgroundImage: `url(${signInBackgroundImg})`,
+        backgroundImage: `url(${signUpBackgroundImg})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundColor: '#fff',
@@ -35,12 +35,25 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '4',
     },
     form: {
-        width: '270px', // Fix IE 11 issue.
+        width: '550px', // Fix IE 11 issue.
         marginTop: '0',
+        marginLeft: '30px',
+
+    },
+    inputsBox: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+    inputRight: {
         marginLeft: '30px',
     },
     submit: {
+        width: '300px',
         margin: theme.spacing(3, 0, 2),
+    },
+    message: {
+        display: 'flex',
+        justifyContent: 'center',
     },
 }));
 

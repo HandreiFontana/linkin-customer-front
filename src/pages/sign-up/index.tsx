@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Formik, Form } from 'formik';
-import { Button, TextField, Link, Grid, Box, Typography } from '@material-ui/core';
+import { Button, TextField, Grid, Link, Box, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import * as Yup from "yup";
 import { useHistory } from 'react-router-dom';
@@ -124,7 +124,7 @@ const SignUp: React.FC = () => {
                                     component="h1"
                                     variant="h4"
                                     className={classes.title}
-                                    style={customErrorMessage === '' ? { display: 'block' } : { display: 'none' }}>Registre-se</Typography>
+                                    style={customErrorMessage === '' ? { display: 'block' } : { display: 'none' }}>Crie sua conta</Typography>
 
                                 <Alert
                                     variant="filled"
@@ -132,82 +132,93 @@ const SignUp: React.FC = () => {
                                     style={customErrorMessage !== '' ? {} : { display: 'none' }}>{customErrorMessage}</Alert>
                             </div>
 
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="username"
-                                label="Username"
-                                name="username"
-                                autoComplete="username"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.username}
-                                helperText={touched.username ? errors.username : ""}
-                                error={touched.username && Boolean(errors.username)}
-                                autoFocus
-                            />
+                            <Grid container className={classes.inputsBox}>
+                                <Grid item xs={5}>
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        id="username"
+                                        label="Username"
+                                        name="username"
+                                        autoComplete="username"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.username}
+                                        helperText={touched.username ? errors.username : ""}
+                                        error={touched.username && Boolean(errors.username)}
+                                        autoFocus
+                                    />
+                                </Grid>
+                                <Grid item xs={5} className={classes.inputRight}>
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        id="email"
+                                        label="Email"
+                                        name="email"
+                                        autoComplete="email"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+                                        helperText={touched.email ? errors.email : ""}
+                                        error={touched.email && Boolean(errors.email)}
+                                    />
+                                </Grid>
+                                <Grid item xs={5}>
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        name="password"
+                                        label="Senha"
+                                        type="password"
+                                        id="password"
+                                        autoComplete="current-password"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.password}
+                                        helperText={touched.password ? errors.password : ""}
+                                        error={touched.password && Boolean(errors.password)}
+                                    />
+                                </Grid>
+                                <Grid item xs={5} className={classes.inputRight}>
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        name="confirmPassword"
+                                        label="Confirmar senha"
+                                        type="password"
+                                        id="confirmPassword"
+                                        autoComplete="current-password"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.confirmPassword}
+                                        helperText={touched.confirmPassword ? errors.confirmPassword : ""}
+                                        error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+                                    />
+                                </Grid>
 
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email"
-                                name="email"
-                                autoComplete="email"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                                helperText={touched.email ? errors.email : ""}
-                                error={touched.email && Boolean(errors.email)}
-                            />
+                                <Grid item xs={0}>
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        color="primary"
+                                        className={classes.submit}
+                                    >
+                                        {isAccessing === true ? dots('Acessando') : 'Registre-se'}
+                                    </Button>
+                                </Grid>
+                            </Grid>
 
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Senha"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                                helperText={touched.password ? errors.password : ""}
-                                error={touched.password && Boolean(errors.password)}
-                            />
 
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="confirmPassword"
-                                label="Confirmar senha"
-                                type="password"
-                                id="confirmPassword"
-                                autoComplete="current-password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.confirmPassword}
-                                helperText={touched.confirmPassword ? errors.confirmPassword : ""}
-                                error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-                            />
 
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                            >
-                                {isAccessing === true ? dots('Acessando') : 'Acessar'}
-                            </Button>
-
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    Esqueceu sua senha?
+                            <Grid item className={classes.message}>
+                                <Link href="/signin" variant="body2">
+                                    se já tem uma conta, entre aqui
                                 </Link>
                             </Grid>
 
