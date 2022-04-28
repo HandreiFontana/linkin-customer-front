@@ -43,7 +43,6 @@ const AuthProvider: React.FC = ({ children }) => {
             email,
             password
         });
-        console.log("SIGN IN")
 
         const { token, account } = response.data;
 
