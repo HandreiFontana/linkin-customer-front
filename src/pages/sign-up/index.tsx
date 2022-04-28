@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Informe um e-mail válido')
         .required('Email é obrigatório'),
-    password: Yup.string().required('Senha é obrigatória'),
+    password: Yup.string().required('Senha é obrigatória').min(3, "Deve ter no mínimo 6 caracteres"), // A senha está com minimo 3 caracteres durante DEV Mode
     confirmPassword: Yup.string().oneOf(
         [Yup.ref('password'), ''],
         'As senhas devem ser iguais'
