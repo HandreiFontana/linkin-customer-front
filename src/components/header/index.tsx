@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { GrLogin } from 'react-icons/gr';
 
-import { AppBar, Button, Container, Grid } from '@material-ui/core';
+import { AppBar, Container, Grid } from '@material-ui/core';
 
 import logo from '../../assets/logo.svg';
+
+import SignInButton from '../sign-in-button';
 
 import { useStyles } from './styles'
 
@@ -19,15 +19,7 @@ const Header: React.FC = () => {
                         <img src={logo} alt="Linkin" className={classes.logo} />
                     </Grid>
                     <Grid item xs={2} className={classes.grid}>
-                        <Button
-                            variant="contained"
-                            component={Link}
-                            to="/signin"
-                            className={classes.button}
-                        >
-                            <GrLogin className={classes.loginIcon} />
-                            Entrar
-                        </Button>
+                        <SignInButton />
                     </Grid>
                 </Grid>
             </Container>

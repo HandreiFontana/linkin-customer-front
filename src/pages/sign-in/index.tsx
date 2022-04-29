@@ -39,8 +39,6 @@ const SignIn: React.FC = () => {
     const handleSubmit = useCallback(async (data: SignInFormData) => {
         setIsAccessing(true);
 
-        console.log(data.email, data.password);
-
         try {
             await signIn({
                 email: data.email,
