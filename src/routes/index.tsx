@@ -5,6 +5,7 @@ import LandingPage from '../pages/landing-page';
 
 import SignIn from '../pages/sign-in';
 import SignUp from '../pages/sign-up';
+import AccountLinks from '../pages/account-links';
 
 import Route from './route';
 
@@ -14,6 +15,8 @@ const Routes: React.FC = () => (
 
         <Route path="/signin" exact component={SignIn} />
         <Route path="/signup" exact component={SignUp} />
+
+        <Route path="/:id" exact component={AccountLinks} />
     </Switch>
 )
 
