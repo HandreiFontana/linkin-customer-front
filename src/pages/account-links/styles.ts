@@ -26,6 +26,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     description: {
         color: theme.palette.primary.dark,
+    },
+    trashBin: {
+        width: "100%",
+        height: "100%",
+
+        display: "flex",
+        justifyContent: "right",
     }
 }))
 
