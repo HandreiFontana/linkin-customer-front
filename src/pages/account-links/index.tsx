@@ -33,6 +33,7 @@ const AccountLinks: React.FC = () => {
     const [categories, setCategories] = useState([]);
     const [links, setLinks] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [username, setUsername] = useState('');
 
     const params = useParams<RouteParams>()
 
@@ -78,6 +79,7 @@ const AccountLinks: React.FC = () => {
         if (params.id) {
             loadCategories()
             verifyIfIsAdmin()
+            setUsername(params.id)
         }
     }, [params, params.id])
 
@@ -88,6 +90,21 @@ const AccountLinks: React.FC = () => {
     if (isAdmin) {
         return (
             <Paper elevation={3} className={classes.paper}>
+                <Grid container className={classes.containerTitle}>
+                    <Grid item xs={10}>
+                        <Typography
+                            variant="h3"
+                            className={classes.title}
+                        >
+                            {username}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2} className={classes.buttonNewLinkContainer}>
+                        <Button className={classes.buttonNewLink}>
+                            Novo link
+                        </Button>
+                    </Grid>
+                </Grid>
                 <div>
                     {categories.map((category: Category) => (
                         <div className={classes.category}>
