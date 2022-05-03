@@ -17,14 +17,6 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: "flex",
         justifyContent: "right"
     },
-    buttonNewLink: {
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.primary.dark,
-        fontWeight: "bold",
-        borderRadius: "30px",
-        height: "3rem",
-        minWidth: "150px"
-    },
     category: {
         maxWidth: "100%",
         padding: "10px 0px"

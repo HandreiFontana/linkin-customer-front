@@ -7,6 +7,7 @@ import { useAuth } from '../../context/auth-context';
 import api from '../../services/api';
 
 import { useStyles } from './styles';
+import { NewLinkModal } from '../../components/new-link-modal';
 
 interface RouteParams {
     id: string;
@@ -100,9 +101,7 @@ const AccountLinks: React.FC = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={2} className={classes.buttonNewLinkContainer}>
-                        <Button className={classes.buttonNewLink}>
-                            Novo link
-                        </Button>
+                        <NewLinkModal />
                     </Grid>
                 </Grid>
                 <div>
