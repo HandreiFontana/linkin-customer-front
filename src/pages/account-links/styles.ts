@@ -5,10 +5,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         maxWidth: "1120px",
         padding: "20px 30px",
     },
-    containerTitle: {
+    titleContainer: {
         display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
     },
     title: {
         fontWeight: "bold",

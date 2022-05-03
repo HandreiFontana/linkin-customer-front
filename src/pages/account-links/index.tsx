@@ -90,8 +90,8 @@ const AccountLinks: React.FC = () => {
     if (isAdmin) {
         return (
             <Paper elevation={3} className={classes.paper}>
-                <Grid container className={classes.containerTitle}>
-                    <Grid item xs={10}>
+                <Grid container>
+                    <Grid item xs={10} className={classes.titleContainer}>
                         <Typography
                             variant="h3"
                             className={classes.title}
