@@ -3,7 +3,6 @@ import { createStyles, Theme, makeStyles, alpha } from "@material-ui/core/styles
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         appBar: {
-            zIndex: theme.zIndex.drawer + 1,
             height: '5rem',
         },
         container: {

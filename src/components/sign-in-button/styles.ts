@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         button: {
             height: '3rem',
+            minWidth: '178px',
             borderRadius: '3rem',
             padding: '0 1.5rem',
             backgroundColor: theme.palette.secondary.main,
