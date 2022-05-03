@@ -22,7 +22,8 @@ interface Link {
 }
 
 const AccountLinks: React.FC = () => {
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
+    const [links, setLinks] = useState([]);
 
     const params = useParams<RouteParams>()
 
@@ -32,13 +33,23 @@ const AccountLinks: React.FC = () => {
 
             try {
                 const categoriesValues: Category[] = []
-                const response = await api.get(`/categories/${id}`);
+                const linksValues: Link[] = []
 
-                response.data.map(async (category: Category) => {
+                const responseCategories = await api.get(`/categories/${id}`);
+
+                responseCategories.data.map(async (category: Category) => {
                     categoriesValues.push(category)
                 })
 
                 setCategories(categoriesValues as []) // "as []" remove error
+
+                const responseLinks = await api.get(`/links/${id}`);
+
+                responseLinks.data.map(async (link: Link) => {
+                    linksValues.push(link)
+                })
+
+                setLinks(linksValues as []) // "as []" remove error
             } catch (e) {
                 console.log(e);
                 return;
@@ -50,13 +61,24 @@ const AccountLinks: React.FC = () => {
         }
     }, [params, params.id])
 
-
     return (
-        <div>
-            {categories.map((category: Category) => (
-                <h1 key={category.id}>{category.name}</h1>
-            ))}
-        </div>
+        <>
+            <div>
+                {categories.map((category: Category) => (
+                    <>
+                        <h1 key={category.id}>{category.name}</h1>
+                        <div>
+                            {links.filter((link: Link) => link.category_id === category.id).map((link: Link) => (
+                                <div key={link.id}>
+                                    <h3>{link.title}</h3>
+                                    <p>{link.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                ))}
+            </div>
+        </>
     )
 }
 
