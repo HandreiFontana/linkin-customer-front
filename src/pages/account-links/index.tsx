@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Button, Grid, Paper, Typography } from '@material-ui/core';
+
 import api from '../../services/api';
+
+import { useStyles } from './styles';
 
 interface RouteParams {
     id: string;
@@ -22,6 +26,8 @@ interface Link {
 }
 
 const AccountLinks: React.FC = () => {
+    const classes = useStyles();
+
     const [categories, setCategories] = useState([]);
     const [links, setLinks] = useState([]);
 
@@ -62,23 +68,45 @@ const AccountLinks: React.FC = () => {
     }, [params, params.id])
 
     return (
-        <>
+        <Paper elevation={3} className={classes.paper}>
             <div>
                 {categories.map((category: Category) => (
-                    <>
-                        <h1 key={category.id}>{category.name}</h1>
+                    <div className={classes.category}>
+                        <Typography
+                            variant='h4'
+                            key={category.id}
+                            className={classes.categoryName}
+                        >
+                            {category.name}
+                        </Typography>
                         <div>
                             {links.filter((link: Link) => link.category_id === category.id).map((link: Link) => (
-                                <div key={link.id}>
-                                    <h3>{link.title}</h3>
-                                    <p>{link.description}</p>
-                                </div>
+                                <Grid
+                                    container
+                                    spacing={3}
+                                    key={link.id}
+                                    className={classes.link}
+                                >
+                                    <Grid item xs={3}>
+                                        <Button className={classes.button}>
+                                            {link.title}
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={9}>
+                                        <Typography
+                                            variant='overline'
+                                            className={classes.description}
+                                        >
+                                            {link.description}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
                             ))}
                         </div>
-                    </>
+                    </div>
                 ))}
             </div>
-        </>
+        </Paper>
     )
 }
 
