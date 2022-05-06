@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Grid, Modal, Typography, TextField } from '@material-ui/core';
+import { Box, Button, Grid, Modal, Typography, TextField, Checkbox } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
 import { useStyles } from './styles'
 
 import api from '../../services/api';
+
 
 interface CreateLinkFormData {
     title: string;
@@ -16,13 +17,15 @@ interface CreateLinkFormData {
     category_id: string;
 }
 
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 const validationSchema = Yup.object().shape({
     title: Yup.string().required('Título obrigatório').max(20),
     description: Yup.string().max(60),
     url: Yup.string().required('URL obrigatório'),
 })
 
-const dots = (text) => {
+const dots = (text: string) => {
     return (
         <div className="running">{text}<span>.</span><span>.</span><span>.</span></div>
     );
@@ -59,6 +62,15 @@ const NewLinkModal: React.FC = () => {
         }
     }, []);
 
+    const changeLinkVisibility = () => {
+        if (linkIsPrivate === false) {
+            setLinkIsPrivate(true);
+        } else {
+            setLinkIsPrivate(true);
+        }
+        return;
+    }
+
     return (
         <div>
             <Button
@@ -79,7 +91,7 @@ const NewLinkModal: React.FC = () => {
                             title: "",
                             description: "",
                             url: "",
-                            isPrivate: false,
+                            isPrivate: linkIsPrivate,
                             category_id: ""
                         }}
                         validationSchema={validationSchema}
@@ -105,14 +117,14 @@ const NewLinkModal: React.FC = () => {
                                 justifyContent="center"
                                 style={{ minHeight: '100%', width: '100%' }}
                             >
-                                <Box className={classes.paper} boxShadow={4}>
+                                <Box className={classes.paper}>
                                     <Form className={classes.form} noValidate>
                                         <div className={classes.messages}>
                                             <Typography
                                                 component="h1"
                                                 variant="h4"
                                                 className={classes.title}
-                                                style={customErrorMessage === '' ? { display: 'block' } : { display: 'none' }}>Salve um link</Typography>
+                                                style={customErrorMessage === '' ? { display: 'block' } : { display: 'none' }}>Novo link</Typography>
                                             <Alert
                                                 variant="filled"
                                                 severity="error"
@@ -137,7 +149,7 @@ const NewLinkModal: React.FC = () => {
                                                     autoFocus
                                                 />
                                             </Grid>
-                                            <Grid item xs={12} className={classes.inputRight}>
+                                            <Grid item xs={12} className={classes.lastInputs}>
                                                 <TextField
                                                     margin="normal"
                                                     required
@@ -153,7 +165,11 @@ const NewLinkModal: React.FC = () => {
                                                     error={touched.description && Boolean(errors.description)}
                                                 />
                                             </Grid>
-                                            <Grid item xs={12}>
+                                            <Grid
+                                                item
+                                                xs={12}
+                                                className={classes.lastInputs}
+                                            >
                                                 <TextField
                                                     margin="normal"
                                                     required
@@ -169,7 +185,11 @@ const NewLinkModal: React.FC = () => {
                                                     error={touched.url && Boolean(errors.url)}
                                                 />
                                             </Grid>
-                                            <Grid item xs={12} className={classes.inputRight}>
+                                            <Grid
+                                                item
+                                                xs={12}
+                                                className={classes.lastInputs}
+                                            >
                                                 <TextField
                                                     margin="normal"
                                                     required
@@ -186,7 +206,28 @@ const NewLinkModal: React.FC = () => {
                                                 />
                                             </Grid>
 
-                                            <Grid item>
+                                            <Grid
+                                                item
+                                                xs={6}
+                                            >
+                                                <Checkbox
+                                                    {...label}
+                                                    color="primary"
+                                                    onChange={changeLinkVisibility}
+                                                    value={values.isPrivate}
+                                                />
+                                                <Typography
+                                                    variant="overline"
+                                                    className={classes.privado}
+                                                >
+                                                    Privado
+                                                </Typography>
+                                            </Grid>
+                                            <Grid
+                                                item
+                                                xs={6}
+                                                className={classes.button}
+                                            >
                                                 <Button
                                                     type="submit"
                                                     fullWidth

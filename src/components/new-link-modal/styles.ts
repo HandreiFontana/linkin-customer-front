@@ -22,6 +22,27 @@ const useStyles = makeStyles((theme: Theme) => ({
         boxShadow: '24px',
         padding: '4px'
     },
+    paper: {
+        margin: '20px',
+    },
+    messages: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+    title: {
+        fontWeight: 'bold',
+        color: theme.palette.primary.main,
+    },
+    lastInputs: {
+        marginTop: '-5px'
+    },
+    checkbox: {
+        marginRight: "0px",
+        color: theme.palette.primary.main,
+    },
+    privado: {
+        color: theme.palette.primary.main,
+    }
 }))
 
 export { useStyles }
