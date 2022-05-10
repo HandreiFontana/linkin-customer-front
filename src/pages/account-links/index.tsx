@@ -39,6 +39,16 @@ const AccountLinks: React.FC = () => {
     const params = useParams<RouteParams>()
 
     useEffect(() => {
+        console.log(account)
+
+        if (!account) {
+            console.log("Não logado")
+        } else {
+            console.log("Logado")
+        }
+    }, [])
+
+    useEffect(() => {
         async function loadCategories() {
             const { id } = params
 
@@ -55,6 +65,8 @@ const AccountLinks: React.FC = () => {
                 setCategories(categoriesValues as []) // "as []" remove error
 
                 const responseLinks = await api.get(`/links/${id}`);
+
+                console.log(responseLinks)
 
                 responseLinks.data.map(async (link: Link) => {
                     linksValues.push(link)

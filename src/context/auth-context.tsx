@@ -40,6 +40,8 @@ const AuthProvider: React.FC = ({ children }) => {
         const account = localStorage.getItem('@linkin:username');
 
         if (token && account) {
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
             return { token, account: JSON.parse(account) };
         }
 
@@ -56,6 +58,8 @@ const AuthProvider: React.FC = ({ children }) => {
 
         localStorage.setItem('@linkin:token', token);
         localStorage.setItem('@linkin:username', JSON.stringify(account.username));
+
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         setData({ token, account })
     }, []);
